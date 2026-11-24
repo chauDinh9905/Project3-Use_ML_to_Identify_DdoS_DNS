@@ -1,0 +1,33 @@
+Thiếu file: không
+
+DrDoS_DNS.parquet: 146.0 MB, 5,074,413 dòng, 87 cột, null=31, NaN=0, inf=324,757
+   DrDoS_DNS          5,071,011
+   BENIGN                 3,402
+
+DrDoS_LDAP.parquet: 53.9 MB, 2,181,542 dòng, 87 cột, null=12, NaN=0, inf=77,288
+   DrDoS_LDAP         2,179,930
+   BENIGN                 1,612
+
+DrDoS_MSSQL.parquet: 175.9 MB, 4,524,498 dòng, 87 cột, null=14, NaN=0, inf=252,918
+   DrDoS_MSSQL        4,522,492
+   BENIGN                 2,006
+
+DrDoS_NTP.parquet: 100.0 MB, 1,217,007 dòng, 87 cột, null=31, NaN=0, inf=14,061
+   DrDoS_NTP          1,202,642
+   BENIGN                14,365
+
+DrDoS_NetBIOS.parquet: 98.4 MB, 4,094,986 dòng, 87 cột, null=8, NaN=0, inf=259,698
+   DrDoS_NetBIOS      4,093,279
+   BENIGN                 1,707
+
+DrDoS_SNMP.parquet: 146.6 MB, 5,161,377 dòng, 87 cột, null=12, NaN=0, inf=21,234
+   DrDoS_SNMP         5,159,870
+   BENIGN                 1,507
+
+DrDoS_SSDP.parquet: 154.0 MB, 2,611,374 dòng, 87 cột, null=2, NaN=0, inf=84,098
+   DrDoS_SSDP         2,610,611
+   BENIGN                   763
+
+DrDoS_UDP.parquet: 186.1 MB, 3,136,802 dòng, 87 cột, null=8, NaN=0, inf=81,338
+   DrDoS_UDP          3,134,645
+   BENIGN                 2,157

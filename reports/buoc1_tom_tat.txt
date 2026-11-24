@@ -1,0 +1,48 @@
+Bỏ qua DrDoS_DNS (đã có Parquet)
+Bỏ qua DrDoS_LDAP (đã có Parquet)
+Bỏ qua DrDoS_MSSQL (đã có Parquet)
+Bỏ qua DrDoS_NetBIOS (đã có Parquet)
+Bỏ qua DrDoS_NTP (đã có Parquet)
+Bỏ qua DrDoS_SNMP (đã có Parquet)
+Bỏ qua DrDoS_SSDP (đã có Parquet)
+Bỏ qua DrDoS_UDP (đã có Parquet)
+
+=== Số dòng theo file và nhãn ===
+shape: (16, 3)
+┌─────────────┬─────────────┬─────────┐
+│ source_file ┆ Label       ┆ len     │
+│ ---         ┆ ---         ┆ ---     │
+│ str         ┆ str         ┆ u32     │
+╞═════════════╪═════════════╪═════════╡
+│ DrDoS_DNS   ┆ DrDoS_DNS   ┆ 5071011 │
+│ DrDoS_DNS   ┆ BENIGN      ┆ 3402    │
+│ DrDoS_LDAP  ┆ DrDoS_LDAP  ┆ 2179930 │
+│ DrDoS_LDAP  ┆ BENIGN      ┆ 1612    │
+│ DrDoS_MSSQL ┆ DrDoS_MSSQL ┆ 4522492 │
+│ …           ┆ …           ┆ …       │
+│ DrDoS_SNMP  ┆ BENIGN      ┆ 1507    │
+│ DrDoS_SSDP  ┆ DrDoS_SSDP  ┆ 2610611 │
+│ DrDoS_SSDP  ┆ BENIGN      ┆ 763     │
+│ DrDoS_UDP   ┆ DrDoS_UDP   ┆ 3134645 │
+│ DrDoS_UDP   ┆ BENIGN      ┆ 2157    │
+└─────────────┴─────────────┴─────────┘
+
+=== DrDoS_DNS: phân bố theo nhãn và cổng 53 ===
+shape: (2, 5)
+┌───────────┬─────────┬───────────────────┬───────────────────┬───────────────────┐
+│ Label     ┆ rows    ┆ ti_le_src_port_53 ┆ ti_le_dst_port_53 ┆ protocol_pho_bien │
+│ ---       ┆ ---     ┆ ---               ┆ ---               ┆ ---               │
+│ str       ┆ u32     ┆ f64               ┆ f64               ┆ f64               │
+╞═══════════╪═════════╪═══════════════════╪═══════════════════╪═══════════════════╡
+│ BENIGN    ┆ 3402    ┆ 0.001176          ┆ 0.330688          ┆ 6.0               │
+│ DrDoS_DNS ┆ 5071011 ┆ 0.000022          ┆ 0.000013          ┆ 17.0              │
+└───────────┴─────────┴───────────────────┴───────────────────┴───────────────────┘
+
+Khoảng thời gian: shape: (1, 2)
+┌────────────────────────────┬────────────────────────────┐
+│ dau                        ┆ cuoi                       │
+│ ---                        ┆ ---                        │
+│ str                        ┆ str                        │
+╞════════════════════════════╪════════════════════════════╡
+│ 2018-12-01 10:51:39.813448 ┆ 2018-12-01 11:22:40.254719 │
+└────────────────────────────┴────────────────────────────┘
