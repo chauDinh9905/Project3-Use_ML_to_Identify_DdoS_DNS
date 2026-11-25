@@ -1,0 +1,190 @@
+
+========================================================================
+1. Làm sạch và khử trùng lặp trong từng file
+========================================================================
+DrDoS_DNS         5,074,413 ->    38,577 dòng (giữ 0.76%)
+DrDoS_LDAP        2,181,542 ->     6,426 dòng (giữ 0.29%)
+DrDoS_MSSQL       4,524,498 ->    18,255 dòng (giữ 0.40%)
+DrDoS_NetBIOS     4,094,986 ->    10,809 dòng (giữ 0.26%)
+DrDoS_NTP         1,217,007 -> 1,111,079 dòng (giữ 91.30%)
+DrDoS_SNMP        5,161,377 ->    15,909 dòng (giữ 0.31%)
+DrDoS_SSDP        2,611,374 ->   658,530 dòng (giữ 25.22%)
+DrDoS_UDP         3,136,802 ->   781,773 dòng (giữ 24.92%)
+
+Khử trùng giữa các file (BENIGN trùng giữa nhiều file): 2,641,358 -> 2,640,662 dòng
+
+========================================================================
+2. Vector đặc trưng mang nhiều nhãn (xung đột)
+========================================================================
+Số vector xung đột: 102,240 (BENIGN lẫn tấn công: 30; chỉ giữa các kiểu tấn công: 102,210)
+shape: (15, 2)
+┌─────────────────────────────────┬───────┐
+│ nhan                            ┆ len   │
+│ ---                             ┆ ---   │
+│ str                             ┆ u32   │
+╞═════════════════════════════════╪═══════╡
+│ DrDoS_SSDP | DrDoS_UDP          ┆ 91556 │
+│ DrDoS_DNS | DrDoS_MSSQL         ┆ 1351  │
+│ DrDoS_DNS | DrDoS_SNMP          ┆ 1244  │
+│ DrDoS_DNS | DrDoS_MSSQL | DrDo… ┆ 1133  │
+│ DrDoS_DNS | DrDoS_LDAP          ┆ 729   │
+│ DrDoS_MSSQL | DrDoS_NetBIOS     ┆ 568   │
+│ DrDoS_DNS | DrDoS_SNMP | DrDoS… ┆ 568   │
+│ DrDoS_DNS | DrDoS_LDAP | DrDoS… ┆ 512   │
+│ DrDoS_DNS | DrDoS_SSDP | DrDoS… ┆ 488   │
+│ DrDoS_SNMP | DrDoS_SSDP         ┆ 374   │
+│ DrDoS_DNS | DrDoS_MSSQL | DrDo… ┆ 373   │
+│ DrDoS_LDAP | DrDoS_SNMP         ┆ 229   │
+│ DrDoS_NetBIOS | DrDoS_SNMP      ┆ 210   │
+│ DrDoS_DNS | DrDoS_LDAP | DrDoS… ┆ 178   │
+│ DrDoS_MSSQL | DrDoS_SNMP        ┆ 173   │
+└─────────────────────────────────┴───────┘
+Đã loại 89 dòng thuộc vector BENIGN lẫn tấn công. Còn 2,640,573 dòng.
+Dòng tấn công trùng vector với kiểu tấn công khác (giữ, gắn cờ xung_dot_tan_cong): 211,502
+shape: (8, 2)
+┌───────────────┬───────┐
+│ Label         ┆ len   │
+│ ---           ┆ ---   │
+│ str           ┆ u32   │
+╞═══════════════╪═══════╡
+│ DrDoS_SSDP    ┆ 94681 │
+│ DrDoS_UDP     ┆ 93394 │
+│ DrDoS_DNS     ┆ 8193  │
+│ DrDoS_MSSQL   ┆ 5274  │
+│ DrDoS_SNMP    ┆ 4330  │
+│ DrDoS_NetBIOS ┆ 3056  │
+│ DrDoS_LDAP    ┆ 2100  │
+│ DrDoS_NTP     ┆ 474   │
+└───────────────┴───────┘
+
+========================================================================
+3. Số dòng theo file và nhãn sau làm sạch (nghi_sai_nhan = có thể gán nhãn sai)
+========================================================================
+shape: (24, 4)
+┌───────────────┬───────────────┬───────────────┬─────────┐
+│ source_file   ┆ Label         ┆ nghi_sai_nhan ┆ len     │
+│ ---           ┆ ---           ┆ ---           ┆ ---     │
+│ str           ┆ str           ┆ bool          ┆ u32     │
+╞═══════════════╪═══════════════╪═══════════════╪═════════╡
+│ DrDoS_DNS     ┆ BENIGN        ┆ false         ┆ 3061    │
+│ DrDoS_DNS     ┆ DrDoS_DNS     ┆ false         ┆ 34013   │
+│ DrDoS_DNS     ┆ DrDoS_DNS     ┆ true          ┆ 1472    │
+│ DrDoS_LDAP    ┆ BENIGN        ┆ false         ┆ 1339    │
+│ DrDoS_LDAP    ┆ DrDoS_LDAP    ┆ false         ┆ 4882    │
+│ DrDoS_LDAP    ┆ DrDoS_LDAP    ┆ true          ┆ 130     │
+│ DrDoS_MSSQL   ┆ BENIGN        ┆ false         ┆ 1810    │
+│ DrDoS_MSSQL   ┆ DrDoS_MSSQL   ┆ false         ┆ 16079   │
+│ DrDoS_MSSQL   ┆ DrDoS_MSSQL   ┆ true          ┆ 289     │
+│ DrDoS_NTP     ┆ BENIGN        ┆ false         ┆ 13119   │
+│ DrDoS_NTP     ┆ DrDoS_NTP     ┆ false         ┆ 1096710 │
+│ DrDoS_NTP     ┆ DrDoS_NTP     ┆ true          ┆ 1015    │
+│ DrDoS_NetBIOS ┆ BENIGN        ┆ false         ┆ 1575    │
+│ DrDoS_NetBIOS ┆ DrDoS_NetBIOS ┆ false         ┆ 8986    │
+│ DrDoS_NetBIOS ┆ DrDoS_NetBIOS ┆ true          ┆ 179     │
+│ DrDoS_SNMP    ┆ BENIGN        ┆ false         ┆ 1211    │
+│ DrDoS_SNMP    ┆ DrDoS_SNMP    ┆ false         ┆ 14207   │
+│ DrDoS_SNMP    ┆ DrDoS_SNMP    ┆ true          ┆ 380     │
+│ DrDoS_SSDP    ┆ BENIGN        ┆ false         ┆ 692     │
+│ DrDoS_SSDP    ┆ DrDoS_SSDP    ┆ false         ┆ 657547  │
+│ DrDoS_SSDP    ┆ DrDoS_SSDP    ┆ true          ┆ 238     │
+│ DrDoS_UDP     ┆ BENIGN        ┆ false         ┆ 1930    │
+│ DrDoS_UDP     ┆ DrDoS_UDP     ┆ false         ┆ 779228  │
+│ DrDoS_UDP     ┆ DrDoS_UDP     ┆ true          ┆ 481     │
+└───────────────┴───────────────┴───────────────┴─────────┘
+
+Tổng BENIGN (gom từ mọi file): 24,737
+Đã lưu data/processed/clean_all.parquet
+
+========================================================================
+4. Tập DNS + BENIGN và chia train/val/test
+========================================================================
+
+split_ngau_nhien:
+shape: (3, 3)
+┌──────────────────┬───────────┬────────┐
+│ split_ngau_nhien ┆ DrDoS_DNS ┆ BENIGN │
+│ ---              ┆ ---       ┆ ---    │
+│ str              ┆ u32       ┆ u32    │
+╞══════════════════╪═══════════╪════════╡
+│ test             ┆ 7097      ┆ 4948   │
+│ train            ┆ 21291     ┆ 14842  │
+│ val              ┆ 7097      ┆ 4947   │
+└──────────────────┴───────────┴────────┘
+
+split_thoi_gian:
+shape: (3, 3)
+┌─────────────────┬───────────┬────────┐
+│ split_thoi_gian ┆ DrDoS_DNS ┆ BENIGN │
+│ ---             ┆ ---       ┆ ---    │
+│ str             ┆ u32       ┆ u32    │
+╞═════════════════╪═══════════╪════════╡
+│ test            ┆ 7097      ┆ 4948   │
+│ train           ┆ 21291     ┆ 14842  │
+│ val             ┆ 7097      ┆ 4947   │
+└─────────────────┴───────────┴────────┘
+
+Khung thời gian của tấn công trong split_thoi_gian:
+shape: (3, 3)
+┌─────────────────┬────────────────────────────┬────────────────────────────┐
+│ split_thoi_gian ┆ tu                         ┆ den                        │
+│ ---             ┆ ---                        ┆ ---                        │
+│ str             ┆ datetime[μs]               ┆ datetime[μs]               │
+╞═════════════════╪════════════════════════════╪════════════════════════════╡
+│ train           ┆ 2018-12-01 10:51:39.813448 ┆ 2018-12-01 11:07:46.981751 │
+│ val             ┆ 2018-12-01 11:07:46.992546 ┆ 2018-12-01 11:11:14.557363 │
+│ test            ┆ 2018-12-01 11:11:14.558675 ┆ 2018-12-01 11:22:39.992561 │
+└─────────────────┴────────────────────────────┴────────────────────────────┘
+
+========================================================================
+5. Chọn đặc trưng (tính trên train của split_ngau_nhien)
+========================================================================
+Cột hằng số (12): ['Bwd PSH Flags', 'Fwd URG Flags', 'Bwd URG Flags', 'FIN Flag Count', 'PSH Flag Count', 'ECE Flag Count', 'Fwd Avg Bytes/Bulk', 'Fwd Avg Packets/Bulk', 'Fwd Avg Bulk Rate', 'Bwd Avg Bytes/Bulk', 'Bwd Avg Packets/Bulk', 'Bwd Avg Bulk Rate']
+
+Loại do tương quan cao (17 cột):
+  Fwd Packet Length Mean           ~ Fwd Packet Length Min            r=0.9812
+  Fwd IAT Total                    ~ Flow Duration                    r=0.9965
+  Fwd IAT Max                      ~ Flow IAT Max                     r=0.9892
+  Fwd IAT Min                      ~ Flow IAT Min                     r=0.9973
+  Fwd Packets/s                    ~ Flow Packets/s                   r=0.9949
+  Min Packet Length                ~ Fwd Packet Length Min            r=0.9989
+  RST Flag Count                   ~ Fwd PSH Flags                    r=1.0
+  Average Packet Size              ~ Packet Length Mean               r=0.9845
+  Avg Fwd Segment Size             ~ Fwd Packet Length Min            r=0.9812
+  Avg Bwd Segment Size             ~ Bwd Packet Length Mean           r=1.0
+  Subflow Fwd Packets              ~ Total Fwd Packets                r=1.0
+  Subflow Fwd Bytes                ~ Total Length of Fwd Packets      r=1.0
+  Subflow Bwd Packets              ~ Total Backward Packets           r=1.0
+  Subflow Bwd Bytes                ~ Total Length of Bwd Packets      r=1.0
+  Active Min                       ~ Active Mean                      r=0.9816
+  Idle Max                         ~ Idle Mean                        r=0.9892
+  Idle Min                         ~ Idle Mean                        r=0.9913
+
+Số đặc trưng còn lại: 47
+
+Top 20 đặc trưng theo mutual information (mẫu 30,000 dòng train):
+  Fwd Packet Length Min            0.5577
+  Packet Length Mean               0.5326
+  Flow Bytes/s                     0.5273
+  Max Packet Length                0.5239
+  Fwd Packet Length Max            0.5028
+  Total Length of Fwd Packets      0.4976
+  Flow Packets/s                   0.4737
+  Bwd Packets/s                    0.4592
+  Flow IAT Mean                    0.4527
+  Total Backward Packets           0.4303
+  Inbound                          0.4298
+  Flow IAT Max                     0.4187
+  Bwd IAT Mean                     0.4051
+  Bwd IAT Max                      0.4036
+  Bwd IAT Total                    0.3997
+  Flow IAT Std                     0.3938
+  Flow Duration                    0.3596
+  Bwd IAT Min                      0.3571
+  Packet Length Variance           0.3522
+  Packet Length Std                0.3490
+
+========================================================================
+Hoàn tất
+========================================================================
+- data/processed/dns_binary.parquet: 60,222 dòng
+- reports/features.json: 47 đặc trưng, 39 cột bị loại
